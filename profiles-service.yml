@@ -10,4 +10,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${eurekasvc:192.168.99.100}:8761/eureka/
+      defaultZone: ${service-registry.uri:http://127.0.0.1:8761}/eureka/
