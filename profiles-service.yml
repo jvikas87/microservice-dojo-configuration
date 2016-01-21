@@ -6,8 +6,3 @@ spring:
     mongodb:
       host: ${mongoserver:localhost}
       port: 27017
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${service-registry.uri:http://127.0.0.1:8761}/eureka/
