@@ -4,16 +4,40 @@ endpoints:
 
 eureka:
   client:
-    registryFetchIntervalSeconds: 5
-    instanceInfoReplicationIntervalSeconds: 5
-    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 3
+    instanceInfoReplicationIntervalSeconds: 3
+    initialInstanceInfoReplicationIntervalSeconds: 3
     serviceUrl:
       defaultZone: ${service-registry.uri:http://127.0.0.1:8761}/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 3
+    leaseExpirationDurationInSeconds: 3
     prefer-ip-address: true
     ip-address: ${external.ip:${spring.cloud.client.ipAddress:localhost}}
     metadataMap:
       instanceId: ${spring.application.instance_id:${random.value}}
 
+ribbon:
+  # Interval to refresh the server list from the source
+  # serverListRefreshInterval: 1000
+
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+
+logging:
+  level:
+    root: WARN
+
+    # Get info on failed OAuth access token validations
+    # org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices: INFO
+
+    # Get info regarding connection to the cofig server and retries if required
+    # org.springframework.cloud.config.client.ConfigServicePropertySourceLocator: INFO
+    # org.springframework.retry.support.RetryTemplate: DEBUG
+
+    # Set INFO to see the allocated port
+    # org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer: INFO
+    # org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainer: INFO
+
+    # Set DEBUG level on Hystrix to get an error message when a fallback method is used.
+    # com.netflix.hystrix: DEBUG
+    # com.netflix.hystrix.strategy.properties.HystrixPropertiesChainedArchaiusProperty: WARN
