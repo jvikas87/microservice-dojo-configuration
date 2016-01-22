@@ -1,0 +1,21 @@
+server:
+  port: ${PORT:8111}
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    accounts-service:
+      path: /accounts/**
+      serviceId: accounts-service
+      stripPrefix: true
+    profiles-service:
+      path: /profiles/**
+      serviceId: profiles-service
+      stripPrefix: true
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+    com.netflix.discovery: OFF
+    com.netflix.zuul: OFF
