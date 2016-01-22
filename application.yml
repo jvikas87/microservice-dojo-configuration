@@ -15,3 +15,5 @@ eureka:
     ip-address: ${external.ip:${spring.cloud.client.ipAddress:localhost}}
     metadataMap:
       instanceId: ${spring.application.instance_id:${random.value}}
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
