@@ -1,6 +1,7 @@
 server:
   port: ${PORT:8111}
 
+# tag::zuul[]
 zuul:
   ignoredServices: '*'
   routes:
@@ -12,10 +13,10 @@ zuul:
       path: /profiles/**
       serviceId: profiles-service
       stripPrefix: true
+# end::zuul[]
 
 logging:
   level:
     ROOT: INFO
     org.springframework.web: DEBUG
-    com.netflix.discovery: DEBUG
     com.netflix.zuul: DEBUG
